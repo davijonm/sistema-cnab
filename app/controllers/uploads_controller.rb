@@ -4,11 +4,11 @@ class UploadsController < ApplicationController
 
   def create
     if params[:file].present?
-      # processa o arquivo CNAB
       result = process_cnab_file(params[:file])
       if result[:success]
         redirect_to root_path, notice: "Arquivo processado com sucesso!"
       else
+        p "Erro no processamento: #{result[:error]}"
         flash[:alert] = result[:error]
         render :new
       end
@@ -32,7 +32,11 @@ class UploadsController < ApplicationController
         f.each_line do |line|
           # para cada linha do arquivo, vamos extrair os dados e salvar no banco
           transaction = parse_cnab_line(line)
-          transaction.save if transaction.valid?
+          if transaction.valid?
+            transaction.save
+          else
+            p "Erro de validação na transação: #{transaction.errors.full_messages}"
+          end
         end
       end
       { success: true }
@@ -53,9 +57,13 @@ class UploadsController < ApplicationController
 
     transaction_type = TransactionType.find_by(code: tipo)
 
+    if transaction_type.nil?
+      p "Tipo de transacao nao encontrado para o código: #{tipo}"
+    end
+
     Transaction.new(
       transaction_type: transaction_type,
-      date: Date.strptime(data, "%d%m%Y"),
+      date: Date.strptime(data, "%Y%m%d"),
       value: valor,
       cpf: cpf,
       card: cartao,
@@ -64,4 +72,5 @@ class UploadsController < ApplicationController
       store_name: nome_loja.strip
     )
   end
+
 end
