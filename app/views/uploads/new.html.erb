@@ -1,0 +1,16 @@
+<h1>Upload de Arquivo CNAB</h1>
+
+<%= form_with(url: uploads_path, local: true, html: { enctype: "multipart/form-data" }) do |form| %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :file, "Selecione o arquivo CNAB" %>
+    <%= form.file_field :file, accept: ".txt", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Enviar", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "uploads#new"
+  root "uploads#index"
   resources :uploads, only: [:new, :create, :index]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

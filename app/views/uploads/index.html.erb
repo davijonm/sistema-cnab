@@ -1,0 +1,36 @@
+<h1>Bem-vindo à Gestão de Transações CNAB</h1>
+
+<div class="btn-group">
+  <%= link_to 'Upload de Arquivo CNAB', new_upload_path, class: 'btn btn-primary' %>
+</div>
+
+<h1>Lista de Transações</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Data</th>
+      <th>Valor</th>
+      <th>CPF</th>
+      <th>Cartão</th>
+      <th>Hora</th>
+      <th>Dono da Loja</th>
+      <th>Nome da Loja</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.transaction_type.description %></td>
+        <td><%= transaction.date %></td>
+        <td><%= transaction.value %></td>
+        <td><%= transaction.cpf %></td>
+        <td><%= transaction.card %></td>
+        <td><%= transaction.time %></td>
+        <td><%= transaction.store_owner %></td>
+        <td><%= transaction.store_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
