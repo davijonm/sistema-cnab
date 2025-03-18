@@ -1,0 +1,29 @@
+# docker-compose.yml
+
+version: '3'
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      - SECRET_KEY_BASE=ae8d813bb5cec2711ca246f37451d5c92429c250ea0a11881a53e58c5cdd06ff9227e4f0c172902c0795033
+      - RAILS_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    image: postgres:13.4-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: desafio_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
