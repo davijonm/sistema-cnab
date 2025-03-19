@@ -4,7 +4,7 @@
 
 * System dependencies
 
-Foram instaladas apenas duas gems, Kaminari para paginação e Rspec para testes
+Foram instaladas apenas 3 gems, Kaminari para paginação, Rspec e FactoryBot para testes
 
 * Inicializar o projeto
 
