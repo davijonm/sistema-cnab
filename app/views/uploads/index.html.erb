@@ -11,7 +11,7 @@
       <th>Tipo</th>
       <th>Data</th>
       <th>Valor</th>
-      <th>CPF</th>
+      <th style="width: 150px; white-space: nowrap;">CPF</th>
       <th>N. Cartão</th>
       <th>Hora</th>
       <th>Dono da Loja</th>
@@ -24,7 +24,7 @@
         <td><%= transaction.transaction_type.description %></td>
         <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
         <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",", delimiter: ".") %></td>
-        <td><%= transaction.cpf %></td>
+        <td><%= transaction.cpf.gsub(/(\d{3})(\d{3})(\d{3})(\d{2})/, '\1.\2.\3-\4') %></td>
         <td><%= transaction.card %></td>
         <td><%= transaction.time.insert(2, ":").insert(5, ":") %></td>
         <td><%= transaction.store_owner %></td>
