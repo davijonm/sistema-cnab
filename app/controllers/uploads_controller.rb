@@ -21,11 +21,19 @@ class UploadsController < ApplicationController
   end
 
   def index
-    @transactions = Transaction.page(params[:page]).per(11)
+    transactions = Transaction.joins(:transaction_type)
 
-    @transactions_by_store = Transaction.all.group_by(&:store_name)
+    @transactions = transactions.page(params[:page]).per(11)
 
-    @store_totals = @transactions_by_store.map do |store_name, transactions|
+    if params[:sort].present? && params[:direction].present?
+      @transactions = @transactions.order("#{params[:sort]} #{params[:direction]}")
+    else
+      @transactions = @transactions.order(date: :desc)
+    end
+
+    transactions_by_store = Transaction.all.group_by(&:store_name)
+
+    @store_totals = transactions_by_store.map do |store_name, transactions|
       total_balance = transactions.sum(&:value)
       { store_name: store_name, total_balance: total_balance }
     end

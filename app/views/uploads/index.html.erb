@@ -8,14 +8,30 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Tipo</th>
-      <th>Data</th>
-      <th>Hora</th>
-      <th>Valor</th>
-      <th style="width: 150px; white-space: nowrap;">CPF</th>
-      <th>N. Cartão</th>
-      <th>Dono da Loja</th>
-      <th>Nome da Loja</th>
+      <th>
+        <%= link_to 'Tipo', uploads_path(sort: 'transaction_types', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'Data', uploads_path(sort: 'date', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'Hora', uploads_path(sort: 'time', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'Valor', uploads_path(sort: 'value', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th style="width: 150px; white-space: nowrap;">
+        <%= link_to 'CPF', uploads_path(sort: 'cpf', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'N. Cartão', uploads_path(sort: 'card', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'Dono da Loja', uploads_path(sort: 'store_owner', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
+      <th>
+        <%= link_to 'Nome da Loja', uploads_path(sort: 'store_name', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+      </th>
     </tr>
   </thead>
   <tbody>
