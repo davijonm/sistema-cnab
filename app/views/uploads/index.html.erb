@@ -12,7 +12,7 @@
       <th>Data</th>
       <th>Valor</th>
       <th>CPF</th>
-      <th>Cartão</th>
+      <th>N. Cartão</th>
       <th>Hora</th>
       <th>Dono da Loja</th>
       <th>Nome da Loja</th>
@@ -22,11 +22,11 @@
     <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.transaction_type.description %></td>
-        <td><%= transaction.date %></td>
-        <td><%= transaction.value %></td>
+        <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",", delimiter: ".") %></td>
         <td><%= transaction.cpf %></td>
         <td><%= transaction.card %></td>
-        <td><%= transaction.time %></td>
+        <td><%= transaction.time.insert(2, ":").insert(5, ":") %></td>
         <td><%= transaction.store_owner %></td>
         <td><%= transaction.store_name %></td>
       </tr>
