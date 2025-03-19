@@ -1,24 +1,24 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
+
+3.3.0
 
 * System dependencies
 
-* Configuration
+Foram instaladas apenas duas gems, Kaminari para paginação e Rspec para testes
 
-* Database creation
+* Inicializar o projeto
 
-* Database initialization
+docker compose up -d --build
 
-* How to run the test suite
+* Rodar migrações para o banco de dados e seeds para criação dos tipos de transação
 
-* Services (job queues, cache servers, search engines, etc.)
+docker compose exec web bash -c "rails db:migrate && rails db:seed"
 
-* Deployment instructions
+* Como rodar os testes direto no container?
 
-* ...
+docker compose exec web bash -c "rspec ./spec"
+
+
+### Sobre a arquitetura
+
+
