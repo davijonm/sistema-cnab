@@ -67,7 +67,7 @@ h1 {
 }
 
 .btn {
-  background-color: #4CAF50;
+  background-color: #535353;
   color: white;
   padding: 12px 24px;
   font-size: 1rem;
@@ -78,7 +78,7 @@ h1 {
 }
 
 .btn:hover {
-  background-color: #45a049;
+  background-color: #6b6b6b;
 }
 
 /* tabela */
@@ -98,7 +98,7 @@ h1 {
 }
 
 .table th {
-  background-color: #4CAF50;
+  background-color: #3f3f3f;
   color: white;
 }
 
@@ -169,7 +169,7 @@ h1 {
 }
 
 .pagination .current {
-  background-color: #4CAF50;
+  background-color: #555555;
   color: white;
 }
 
