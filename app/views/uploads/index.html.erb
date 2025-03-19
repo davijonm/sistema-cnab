@@ -36,7 +36,7 @@
   </thead>
   <tbody>
     <% @transactions.each do |transaction| %>
-      <tr>
+      <tr class="<%= transaction.transaction_type.income? ? 'text-success' : 'text-danger' %>">
         <td><%= transaction.transaction_type.description %></td>
         <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
         <td><%= transaction.time.insert(2, ":").insert(5, ":") %></td>
