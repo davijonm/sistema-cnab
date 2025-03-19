@@ -38,6 +38,23 @@
   <%= paginate @transactions %>
 </div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome da Loja</th>
+      <th>Total de Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @store_totals.sort_by { |store_total| store_total[:store_name] }.each do |store_total| %>
+      <tr>
+        <td><%= store_total[:store_name] %></td>
+        <td><%= number_to_currency(store_total[:total_balance], unit: "R$", separator: ",", delimiter: ".") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <div id="uploadModal" class="modal" style="display:none;">
   <div class="modal-content">

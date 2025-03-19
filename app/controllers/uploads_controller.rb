@@ -22,6 +22,13 @@ class UploadsController < ApplicationController
 
   def index
     @transactions = Transaction.page(params[:page]).per(11)
+
+    @transactions_by_store = Transaction.all.group_by(&:store_name)
+
+    @store_totals = @transactions_by_store.map do |store_name, transactions|
+      total_balance = transactions.sum(&:value)
+      { store_name: store_name, total_balance: total_balance }
+    end
   end
 
 end
