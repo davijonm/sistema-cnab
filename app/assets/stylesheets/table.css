@@ -2,12 +2,12 @@
 .table {
   width: 90%;
   max-width: 1000px;
-  margin: 10px 0;
+  margin: 15px 0;
   border-collapse: collapse;
   border: 1px solid #ddd;
   background-color: #f8f8f8;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 5.1);
+  box-shadow: 0 14px 18px rgba(0, 0, 0, 5.1);
 }
 
 .table th, .table td {
@@ -38,9 +38,11 @@
 }
 
 .text-success {
-  color: #4CAF50;
+  color: #32b336;
+  font-weight: bold;
 }
 
 .text-danger {
-  color: #f44336;
+  color: #db1c0e;
+  font-weight: bold;
 }
