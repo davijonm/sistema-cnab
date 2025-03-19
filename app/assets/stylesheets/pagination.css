@@ -2,7 +2,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  background-color: #3f3f3f;
 }
 
 .pagination a,
