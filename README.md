@@ -37,14 +37,13 @@ docker compose exec web rspec ./spec
 
 ## Como Utilizar
 
-### **1. Upload de Arquivo CNAB**
-- Acesse `http://localhost:3000`
+### **2. Upload de Arquivo CNAB**
+- Acesse `http://localhost:3000/users/sign_in`
+- Faça o login com o email já criado pelo seeds: "bycoders@exemplo.com" e senha "senha123"
+
+### **2. Upload de Arquivo CNAB**
 - Faça o upload do arquivo CNAB
 - As transações serão processadas e armazenadas no banco de dados
 
-### **2. Visualização de Transações**
-- Acesse `http://localhost:3000/`
-- As transações são listadas, podendo ser ordenadas por data ou tipo de transação
-
-
-
+### **3. Visualização de Transações**
+- As transações são listadas, podendo ser ordenadas por data, tipo de transação, hora, valor...
