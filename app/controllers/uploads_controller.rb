@@ -1,4 +1,3 @@
-# app/controllers/uploads_controller.rb
 class UploadsController < ApplicationController
   def new
   end
