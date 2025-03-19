@@ -1,9 +1,9 @@
-<h1>Bem-vindo à Gestão de Transações CNAB</h1>
-
-<div class="btn-group">
-  <%= link_to 'Upload de Arquivo CNAB', new_upload_path, class: 'btn' %>
+<div class="header-container">
+  <h1>Lista de Transações</h1>
+  <div class="btn-group">
+    <button class="btn" onclick="openModal()">Upload de Arquivo CNAB</button>
+  </div>
 </div>
-<h1>Lista de Transações</h1>
 
 <table class="table">
   <thead>
@@ -33,3 +33,41 @@
     <% end %>
   </tbody>
 </table>
+
+<div id="uploadModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <%= form_with(url: uploads_path, local: true, html: { enctype: "multipart/form-data" }) do |form| %>
+      <% if flash[:alert] %>
+        <div class="alert"><%= flash[:alert] %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= form.label :file, "Selecione o arquivo CNAB", class: "label" %>
+        <%= form.file_field :file, accept: ".txt", required: true, class: "file-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= link_to 'Voltar', root_path, class: 'btn' %>
+        <%= form.submit "Enviar", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById("uploadModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("uploadModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    let modal = document.getElementById("uploadModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+</script>
