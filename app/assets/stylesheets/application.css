@@ -62,7 +62,11 @@ h1 {
 }
 
 .btn-group {
-  margin-left: 535px;
+  margin-left: 465px;
+  margin-top: 40px;
+}
+.btn-sair {
+  margin-left: 10px;
   margin-top: 40px;
 }
 

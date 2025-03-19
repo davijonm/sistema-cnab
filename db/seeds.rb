@@ -11,3 +11,7 @@ if TransactionType.count.zero?
     { code: 9, description: 'Aluguel', nature: 'Saída', sign: '-' }
   ])
 end
+
+if User.count.zero?
+  User.create(email: "bycoders@exemplo.com", password: "senha123", password_confirmation: "senha123")
+end

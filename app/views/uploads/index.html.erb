@@ -3,6 +3,11 @@
   <div class="btn-group">
     <button class="btn" onclick="openModal()">Upload de Arquivo CNAB</button>
   </div>
+  <div class="btn-sair">
+    <%= form_with url: destroy_user_session_path, method: :delete, local: true do %>
+      <%= submit_tag "Sair", class: "btn" %>
+    <% end %>
+  </div>
 </div>
 
 <table class="table">
