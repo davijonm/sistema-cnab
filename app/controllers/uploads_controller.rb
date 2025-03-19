@@ -21,6 +21,7 @@ class UploadsController < ApplicationController
   end
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.page(params[:page]).per(11)
   end
+
 end

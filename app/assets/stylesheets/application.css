@@ -158,3 +158,26 @@ form {
   font-size: 24px;
   cursor: pointer;
 }
+
+/* paginacao */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.pagination .current {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
