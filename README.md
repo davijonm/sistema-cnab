@@ -1,24 +1,50 @@
-* Ruby version
+# Desafio Dev - Processador de Arquivos CNAB
 
-3.3.0
+Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, armazenar transações e exibir de forma organizada. Além da interface web, a aplicação expõe um endpoint de API para consulta das transações.
 
-* System dependencies
+## Tecnologias Utilizadas
+- Ruby on Rails
+- PostgreSQL
+- Docker & Docker Compose
+- RSpec (para testes)
+- Kaminari (para paginação)
 
-Foram instaladas apenas 3 gems, Kaminari para paginação, Rspec e FactoryBot para testes
+## Setup do Projeto
 
-* Inicializar o projeto
+### 1. Pré-requisitos
+- Docker e Docker Compose instalados
 
+### 2. Clonar o repositório
+```sh
+git clone https://github.com/davijonm/desafio-dev.git
+cd desafio-dev
+```
+
+### 3. Subir os containers
+```sh
 docker compose up -d --build
+```
 
-* Rodar migrações para o banco de dados e seeds para criação dos tipos de transação
+### 4. Criar o banco de dados e rodar as migrações
+```sh
+docker compose exec web rails db:migrate db:seed
+```
 
-docker compose exec web bash -c "rails db:migrate && rails db:seed"
+### 5. Rodar os testes
+```sh
+docker compose exec web rspec ./spec
+```
 
-* Como rodar os testes direto no container?
+## Como Utilizar
 
-docker compose exec web bash -c "rspec ./spec"
+### **1. Upload de Arquivo CNAB**
+- Acesse `http://localhost:3000`
+- Faça o upload do arquivo CNAB
+- As transações serão processadas e armazenadas no banco de dados
 
+### **2. Visualização de Transações**
+- Acesse `http://localhost:3000/`
+- As transações são listadas, podendo ser ordenadas por data ou tipo de transação
 
-### Sobre a arquitetura
 
 
