@@ -1,0 +1,28 @@
+/* Paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #3f3f3f;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0px;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.pagination a:hover {
+  background-color: #969696;
+  color: #535353;
+}
+
+.pagination .current {
+  background-color: #535353;
+  color: white;
+}
+
+.pagination .disabled {
+  color: #ffffff;
+}

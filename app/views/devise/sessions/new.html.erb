@@ -1,0 +1,19 @@
+<div class="login-container">
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+    </div>
+
+    <div class="form-group actions">
+      <%= f.submit "Log in", class: "submit-btn" %>
+    </div>
+  <% end %>
+
+</div>
