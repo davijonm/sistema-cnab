@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Desafio Dev" %></title>
+    <title><%= content_for(:title) || "Desafio bycoders_" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,6 +23,23 @@
   </head>
 
   <body>
+
+    <% if flash[:notice].present? || flash[:alert].present? %>
+      <div class="flash-message">
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

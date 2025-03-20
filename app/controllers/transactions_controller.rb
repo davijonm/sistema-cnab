@@ -1,6 +1,6 @@
-class UploadsController < ApplicationController
+class TransactionsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
   end
 
@@ -12,9 +12,8 @@ class UploadsController < ApplicationController
       if result[:success]
         redirect_to root_path, notice: "Arquivo processado com sucesso!"
       else
-        p "Erro no processamento: #{result[:error]}"
-        flash[:alert] = result[:error]
-        render :new
+        flash[:alert] = "Ops, há algo de errado com o arquivo."
+        render 'transactions/422', status: :unprocessable_entity
       end
     else
       flash[:alert] = "Por favor, selecione um arquivo."

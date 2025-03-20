@@ -2,7 +2,8 @@
 .pagination {
   display: flex;
   justify-content: center;
-  background-color: #3f3f3f;
+  background: transparent;
+  margin-top: 5px;
 }
 
 .pagination a,
@@ -16,11 +17,13 @@
 .pagination a:hover {
   background-color: #969696;
   color: #535353;
+  border-radius: 8px;
 }
 
 .pagination .current {
   background-color: #535353;
   color: white;
+  border-radius: 8px;
 }
 
 .pagination .disabled {

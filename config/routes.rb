@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root "uploads#index"
+  root "transactions#index"
 
   devise_for :users
 
-  resources :uploads, only: [:new, :create, :index]
+  resources :transactions, only: [:new, :create, :index]
 end

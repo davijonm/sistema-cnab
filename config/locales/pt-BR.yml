@@ -1,0 +1,6 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "não foi possível salvar este registro"
+        too_short: "a senha é muito curta (9 caracteres no mínimo)"

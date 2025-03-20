@@ -1,9 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe UploadsController, type: :controller do
+RSpec.describe TransactionsController, type: :controller do
 
   describe "POST #create" do
     let(:file) { fixture_file_upload("CNAB.txt", "text/plain") }
+
+    before do
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+    end
 
     context "quando o arquivo esta presente e o processamento é bem sucedido" do
       before do
@@ -21,13 +25,13 @@ RSpec.describe UploadsController, type: :controller do
     context "quando o arquivo esta presente mas o processamento falha" do
       before do
         allow_any_instance_of(ProcessCnabService).to receive(:process_file)
-          .and_return({ success: false, error: "Processing error" })
+          .and_return({ success: false, error: "Ops, há algo de errado com o arquivo." })
       end
 
       it "renderiza o template new e define flash alert" do
         post :create, params: { file: file }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to eq("Processing error")
+        expect(response).to render_template("422")
+        expect(flash[:alert]).to eq("Ops, há algo de errado com o arquivo.")
       end
     end
 
@@ -41,7 +45,10 @@ RSpec.describe UploadsController, type: :controller do
   end
 
   describe "GET #index" do
-    before do
+
+  before do
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+
       # cria um TransactionType e algumas transacoes ppara teste
       transaction_type = create(:transaction_type, code: 1, description: "Venda", nature: "Entrada", sign: "+")
       3.times do |i|
