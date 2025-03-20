@@ -42,6 +42,8 @@ docker compose exec web rspec ./spec
 - Acesse `http://localhost:3000/users/sign_in`
 - Faça o login com o email que já foi criado anteriormente pelo seeds: "bycoders@exemplo.com" e senha "senha123"
 
+Obs: Gostaria de ter achado uma foto para o background de mais qualidade 😅
+
 ### **2. Upload de Arquivo CNAB**
 - Faça o upload do arquivo CNAB (está dentro do repo neste diretório: spec/fixtures/files/CNAB.txt)
 - As transações serão processadas e armazenadas no banco de dados
