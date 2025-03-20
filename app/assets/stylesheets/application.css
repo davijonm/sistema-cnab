@@ -32,8 +32,6 @@ body {
 h1 {
   font-size: 1.5rem;
   color: #fcfcfc;
-  text-align: center;
-  margin-top: 40px;
 }
 
 
@@ -73,23 +71,24 @@ h1 {
   z-index: 10; 
 }
 
-.logo {
+.logo-footer {
   max-width: 150px;
   height: auto;
-  border-radius: 100px
+  border-radius: 100px;
+  margin-bottom: 30px;
 }
 
 .header-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 97%;
+  padding-top: 20px;
 }
 
-.btn-group {
-  margin-left: 465px;
-  margin-top: 40px;
-}
-.btn-sair {
-  margin-left: 10px;
-  margin-top: 40px;
+.btn-container {
+  display: flex;
+  gap: 10px;
 }
 
 .btn {
