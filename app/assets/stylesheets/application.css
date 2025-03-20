@@ -58,8 +58,7 @@ h1 {
 .alert {
   background-color: #f44336;
   color: white;
-  padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 0px !important;
   border-radius: 4px;
   font-size: 1rem;
   text-align: center;

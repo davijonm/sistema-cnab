@@ -2,7 +2,7 @@
   <div class="modal-overlay" onclick="closeModal()"></div>
   <div class="modal-content">
     <div class="modal-header">
-      <h3>Upload de Arquivo CNAB</h3>
+      <h3>Upload de arquivo CNAB</h3>
       <button type="button" class="close-button" onclick="closeModal()" aria-label="Fechar">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -39,7 +39,7 @@
 
       <div class="modal-footer">
         <%= link_to 'Cancelar', '#', onclick: 'closeModal(); return false;', class: 'btn btn-secondary' %>
-        <%= form.submit "Enviar Arquivo", class: "btn btn-primary" %>
+        <%= form.submit "Processar arquivo", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
