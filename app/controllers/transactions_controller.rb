@@ -12,9 +12,9 @@ class TransactionsController < ApplicationController
       if result[:success]
         redirect_to root_path, notice: "Arquivo processado com sucesso!"
       else
-        p "Erro no processamento: #{result[:error]}"
-        flash[:alert] = result[:error]
-        render :new
+        flash[:alert] = "Ops, há algo de errado com o arquivo."
+        p "Erro: #{result[:errors]}"
+        render 'transactions/422', status: :unprocessable_entity
       end
     else
       flash[:alert] = "Por favor, selecione um arquivo."
@@ -38,12 +38,6 @@ class TransactionsController < ApplicationController
     @store_totals = transactions_by_store.map do |store_name, transactions|
       total_balance = transactions.sum(&:value)
       { store_name: store_name, total_balance: total_balance }
-    end
-
-    if request.format.json? || params[:format] == 'json'
-      render json: { transactions: @transactions, store_totals: @store_totals }
-    else
-      render :index
     end
   end
 
