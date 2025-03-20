@@ -3,8 +3,9 @@
 Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, armazenar transações e exibir de forma organizada. 
 
 ## Tecnologias Utilizadas
-- Ruby on Rails
-- PostgreSQL
+- Ruby 3.3.0
+- Rails 8.0
+- PostgreSQL 13.4
 - Docker & Docker Compose
 - RSpec (para testes)
 - Kaminari (para paginação)
@@ -42,8 +43,6 @@ docker compose exec web rspec ./spec
 - Acesse `http://localhost:3000/users/sign_in`
 - Faça o login com o email que já foi criado anteriormente pelo seeds: "bycoders@exemplo.com" e senha "senha123"
 
-Obs: Gostaria de ter achado uma foto para o background de mais qualidade 😅
-
 ### **2. Upload de Arquivo CNAB**
 - Faça o upload do arquivo CNAB (ele está dentro do repo neste diretório: spec/fixtures/files/CNAB.txt)
 - As transações serão processadas e armazenadas no banco de dados
@@ -51,6 +50,12 @@ Obs: Gostaria de ter achado uma foto para o background de mais qualidade 😅
 ### **3. Visualização de Transações**
 - As transações são listadas, podendo ser ordenadas por data, tipo de transação, hora, valor...
 
+## Arquitetura
+
+Utilizei POO na criação do service que faz o processamento do arquivo;
+Criei testes unitarios para o service, controller e model user;
+Usei a gem devise para fazer a autenticação;
+Utilizei um callback no transactions_controller para garantir que as operações só serão realizadas mediante autenticação;
 
 ## Considerações Finais
 
@@ -61,7 +66,7 @@ Obviamente eu poderia ter feito método index do transactions_controller, assim:
 render json: { transactions: @transactions, store_totals: @store_totals }
 
 Entregaria um json para a requisição curl -H "Accept: application/json" -H "http://localhost:3000/transactions", 
-mas isso perderia o propósito das views do rails.
+mas tiraria o propósito das views do rails.
 
 Um exemplo de documentação da API para este cenário onde eu retorno um json nos métodos index do transactions_controller, seria este:
 
