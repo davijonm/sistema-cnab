@@ -1,0 +1,47 @@
+<div id="uploadModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Upload de Arquivo CNAB</h3>
+      <button type="button" class="close-button" onclick="closeModal()" aria-label="Fechar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <%= form_with(url: transactions_path, local: true, html: { enctype: "multipart/form-data", class: "upload-form" }) do |form| %>
+      <div class="modal-body">
+        <% if flash[:alert] %>
+          <div class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="alert-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span><%= flash[:alert] %></span>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :file, "Arquivo CNAB", class: "form-label" %>
+          <div class="file-input-wrapper">
+            <div class="file-input-container">
+              <div class="file-input-button">Escolher arquivo</div>
+              <div class="file-input-text">Nenhum arquivo selecionado</div>
+              <%= form.file_field :file, accept: ".txt", required: true, class: "file-input", onchange: "updateFileName(this)" %>
+            </div>
+            <div class="file-input-help">Selecione um arquivo .txt no formato CNAB</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <%= link_to 'Cancelar', '#', onclick: 'closeModal(); return false;', class: 'btn btn-secondary' %>
+        <%= form.submit "Enviar Arquivo", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
