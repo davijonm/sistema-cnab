@@ -59,22 +59,24 @@
   <%= paginate @transactions %>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nome da Loja</th>
-      <th>Total de Saldo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @store_totals.sort_by { |store_total| store_total[:store_name] }.each do |store_total| %>
+<% if @transactions.any? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= store_total[:store_name] %></td>
-        <td><%= number_to_currency(store_total[:total_balance], unit: "R$", separator: ",", delimiter: ".") %></td>
+        <th>Nome da Loja</th>
+        <th>Total de Saldo</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @store_totals.sort_by { |store_total| store_total[:store_name] }.each do |store_total| %>
+        <tr>
+          <td><%= store_total[:store_name] %></td>
+          <td><%= number_to_currency(store_total[:total_balance], unit: "R$", separator: ",", delimiter: ".") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 
 <div id="uploadModal" class="modal" style="display:none;">
@@ -98,9 +100,11 @@
   </div>
 </div>
 
-<div class="logo-container">
-  <%= image_tag "logo-bycoders.jpg", alt: "Logo", class: "logo" %>
-</div>
+<% if @transactions.any? %>
+  <div class="logo-container">
+    <%= image_tag "logo-bycoders.jpg", alt: "Logo", class: "logo" %>
+  </div>
+<% end %>
 
 <script>
   function openModal() {

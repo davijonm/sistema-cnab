@@ -1,2 +1,2 @@
-module TransactionHelper
+module TransactionsHelper
 end
