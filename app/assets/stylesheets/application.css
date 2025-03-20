@@ -70,11 +70,11 @@ h1 {
   z-index: 10; 
 }
 
-.logo-footer {
+.logo-footer, .davi {
   max-width: 150px;
   height: auto;
   border-radius: 100px;
-  margin: 30px;
+  margin: 20px 15px 20px 0;
 }
 
 .header-container {
