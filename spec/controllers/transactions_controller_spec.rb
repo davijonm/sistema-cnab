@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UploadsController, type: :controller do
+RSpec.describe TransactionController, type: :controller do
 
   describe "POST #create" do
     let(:file) { fixture_file_upload("CNAB.txt", "text/plain") }

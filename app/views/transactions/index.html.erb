@@ -14,28 +14,28 @@
   <thead>
     <tr>
       <th>
-        <%= link_to 'Tipo', uploads_path(sort: 'transaction_types', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Tipo', transactions_path(sort: 'transaction_types', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'Data', uploads_path(sort: 'date', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Data', transactions_path(sort: 'date', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'Hora', uploads_path(sort: 'time', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Hora', transactions_path(sort: 'time', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'Valor', uploads_path(sort: 'value', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Valor', transactions_path(sort: 'value', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th style="width: 150px; white-space: nowrap;">
-        <%= link_to 'CPF', uploads_path(sort: 'cpf', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'CPF', transactions_path(sort: 'cpf', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'N. Cartão', uploads_path(sort: 'card', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'N. Cartão', transactions_path(sort: 'card', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'Dono da Loja', uploads_path(sort: 'store_owner', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Dono da Loja', transactions_path(sort: 'store_owner', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
       <th>
-        <%= link_to 'Nome da Loja', uploads_path(sort: 'store_name', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
+        <%= link_to 'Nome da Loja', transactions_path(sort: 'store_name', direction: (params[:direction] == 'asc' ? 'desc' : 'asc')) %>
       </th>
     </tr>
   </thead>
@@ -80,7 +80,7 @@
 <div id="uploadModal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <%= form_with(url: uploads_path, local: true, html: { enctype: "multipart/form-data" }) do |form| %>
+    <%= form_with(url: transactions_path, local: true, html: { enctype: "multipart/form-data" }) do |form| %>
       <% if flash[:alert] %>
         <div class="alert"><%= flash[:alert] %></div>
       <% end %>

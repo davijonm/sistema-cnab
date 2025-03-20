@@ -1,6 +1,6 @@
-class UploadsController < ApplicationController
+class TransactionsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
   end
 
@@ -38,6 +38,12 @@ class UploadsController < ApplicationController
     @store_totals = transactions_by_store.map do |store_name, transactions|
       total_balance = transactions.sum(&:value)
       { store_name: store_name, total_balance: total_balance }
+    end
+
+    if request.format.json? || params[:format] == 'json'
+      render json: { transactions: @transactions, store_totals: @store_totals }
+    else
+      render :index
     end
   end
 
