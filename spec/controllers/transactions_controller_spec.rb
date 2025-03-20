@@ -5,6 +5,10 @@ RSpec.describe TransactionsController, type: :controller do
   describe "POST #create" do
     let(:file) { fixture_file_upload("CNAB.txt", "text/plain") }
 
+    before do
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+    end
+
     context "quando o arquivo esta presente e o processamento é bem sucedido" do
       before do
         allow_any_instance_of(ProcessCnabService).to receive(:process_file)
@@ -41,7 +45,10 @@ RSpec.describe TransactionsController, type: :controller do
   end
 
   describe "GET #index" do
-    before do
+
+  before do
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+
       # cria um TransactionType e algumas transacoes ppara teste
       transaction_type = create(:transaction_type, code: 1, description: "Venda", nature: "Entrada", sign: "+")
       3.times do |i|
