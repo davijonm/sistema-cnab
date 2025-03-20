@@ -13,7 +13,6 @@ class TransactionsController < ApplicationController
         redirect_to root_path, notice: "Arquivo processado com sucesso!"
       else
         flash[:alert] = "Ops, há algo de errado com o arquivo."
-        p "Erro: #{result[:errors]}"
         render 'transactions/422', status: :unprocessable_entity
       end
     else
