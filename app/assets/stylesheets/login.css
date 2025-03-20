@@ -9,6 +9,7 @@
 
 .login-page {
   min-height: 75vh;
+  min-width: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +27,7 @@
 }
 
 .logo {
-  margin-left: 20px;
+  margin-left: 50px;
   max-width: 150px;
   height: auto;
   border-radius: 100px;
