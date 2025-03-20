@@ -1,6 +1,6 @@
 # Desafio Dev - Processador de Arquivos CNAB
 
-Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, armazenar transações e exibir de forma organizada. Além da interface web, a aplicação expõe um endpoint de API para consulta das transações.
+Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, armazenar transações e exibir de forma organizada. 
 
 ## Tecnologias Utilizadas
 - Ruby on Rails
@@ -45,7 +45,7 @@ docker compose exec web rspec ./spec
 Obs: Gostaria de ter achado uma foto para o background de mais qualidade 😅
 
 ### **2. Upload de Arquivo CNAB**
-- Faça o upload do arquivo CNAB (está dentro do repo neste diretório: spec/fixtures/files/CNAB.txt)
+- Faça o upload do arquivo CNAB (ele está dentro do repo neste diretório: spec/fixtures/files/CNAB.txt)
 - As transações serão processadas e armazenadas no banco de dados
 
 ### **3. Visualização de Transações**
