@@ -10,6 +10,7 @@ Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, arma
 - RSpec (para testes)
 - Kaminari (para paginação)
 - Devise (para autenticação)
+- Better Erros (para debug)
 
 ## Setup do Projeto
 
