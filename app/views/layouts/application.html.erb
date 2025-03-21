@@ -23,6 +23,9 @@
   </head>
 
   <body>
+
+    <%= render 'layouts/navbar' unless controller_name == 'sessions' && action_name == 'new' %>
+
     <div id="flash_messages">
       <%= render "shared/flash" %>
     </div>
@@ -30,7 +33,6 @@
     <%= yield %>
 
     <turbo-frame id="turbo_redirect"></turbo-frame>
-
 
     <script>
       document.addEventListener("turbo:load", () => {
