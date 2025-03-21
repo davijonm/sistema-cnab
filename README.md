@@ -1,4 +1,4 @@
-# Desafio Dev - Processador de Arquivos CNAB
+# Processador de Arquivos CNAB
 
 Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, armazenar transações e exibir de forma organizada. 
 
