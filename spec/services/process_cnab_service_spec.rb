@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ProcessCnabService, type: :service do
-  let(:valid_file) { File.open(Rails.root.join('spec', 'fixtures', 'valid_cnab.txt')) }
-  let(:invalid_file) { File.open(Rails.root.join('spec', 'fixtures', 'invalid_cnab.txt')) }
+  let(:valid_file) { File.open(Rails.root.join('spec', 'fixtures', 'CNAB.txt')) }
+  let(:invalid_file) { File.open(Rails.root.join('spec', 'fixtures', 'INVALID_CNAB.txt')) }
 
   describe '#process_file' do
     context 'when the file is valid' do

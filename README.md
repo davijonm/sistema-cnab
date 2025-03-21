@@ -10,6 +10,8 @@ Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, arma
 - RSpec (para testes)
 - Kaminari (para paginação)
 - Devise (para autenticação)
+- FastJsonapi (para serialização da api)
+- Better Erros (para debug)
 
 ## Setup do Projeto
 
@@ -44,7 +46,7 @@ docker compose exec web rspec ./spec
 - Faça o login com o email que já foi criado anteriormente pelo seeds: "bycoders@exemplo.com" e senha "senha1234"
 
 ### **2. Upload de Arquivo CNAB**
-- Faça o upload do arquivo CNAB (ele está dentro do repo neste diretório: spec/fixtures/files/CNAB.txt)
+- Faça o upload do arquivo CNAB (ele está dentro do repo neste diretório: spec/fixtures/CNAB.txt)
 - As transações serão processadas e armazenadas no banco de dados
 
 ### **3. Visualização de Transações**
@@ -52,57 +54,158 @@ docker compose exec web rspec ./spec
 
 ## Arquitetura
 
-Utilizei POO na criação do service que faz o processamento do arquivo;
-Criei testes unitarios para o service, controller e model user;
-Usei a gem devise para fazer a autenticação;
-Utilizei um callback no transactions_controller para garantir que as operações só serão realizadas mediante autenticação;
+- Utilizei POO na criação do service que faz o processamento do arquivo;
+- Criei testes unitarios para o service, controller e model user;
+- Usei a gem devise para fazer a autenticação;
+- Utilizei um callback no transactions_controller para garantir que as operações só serão realizadas mediante autenticação;
 
-## Considerações Finais
+# Considerações
 
 A aplicação foi escrita usando o formato completo do rails (sem a flag --api), portanto os controllers não respondem no formato json, respondem um template a ser renderizado após a requisição. Optei por fazer desta forma para ter um frontend já integrado com o rails e ter mais velocidade e dinamismo na entrega.
 
-Obviamente eu poderia ter feito método index do transactions_controller, assim:
+Para termos os dois cenários, criei de exemplo, um controller serializado (/app/controllers/api/v1/transactions_controller.rb) para funcionar como uma API REST. Basicamente ele faz a mesma coisa que o controller original (/app/controllers/transactions_controller.rb) mas serve para consultas, então não implementei autenticação nele.
 
-render json: { transactions: @transactions, store_totals: @store_totals }
-
-Entregaria um json para a requisição curl -H "Accept: application/json" -H "http://localhost:3000/transactions", 
-mas tiraria o propósito das views do rails.
-
-Um exemplo de documentação da API para este cenário onde eu retorno um json nos métodos index do transactions_controller, seria este:
+## Documentação da API criada:
 
 ### **1. Listar todas as transações**
 ```http
-GET /transactions/
+GET api/v1/transactions
 ```
-**Exemplo de resposta:**
-```json
-[
-  {
-    "id": 1,
-    "store_name": "Loja Exemplo",
-    "transaction_type": "Venda",
-    "value": 150.00,
-    "date": "2024-03-19T12:00:00Z"
-  },
-  {
-    "id": 2,
-    "store_name": "Mercado XPTO",
-    "transaction_type": "Saque",
-    "value": -200.00,
-    "date": "2024-03-19T14:30:00Z"
+
+**Requisição:**
+```http
+curl "http://localhost:3000/api/v1/transactions"
+```
+
+**Resposta:**
+
+```http
+{
+  "data": [
+    {
+      "id": "27",
+      "type": "transaction",
+      "attributes": {
+        "id": 27,
+        "value": "506.17",
+        "date": "2019-06-01",
+        "cpf": "84515254073",
+        "card": "1234****2231",
+        "time": "100000",
+        "store_name": "MERCADO DA AVENIDA",
+        "store_owner": "MARCOS PEREIRA"
+      },
+      "relationships": {
+        "transaction_type": {
+          "data": {
+            "id": "4",
+            "type": "transaction_type"
+          }
+        }
+      }
+    },
+    {
+      "id": "12",
+      "type": "transaction",
+      "attributes": {
+        "id": 12,
+        "value": "132.0",
+        "date": "2019-03-01",
+        "cpf": "55641815063",
+        "card": "3123****7687",
+        "time": "145607",
+        "store_name": "LOJA DO Ó - MATRIZ",
+        "store_owner": "MARIA JOSEFINA"
+      },
+      "relationships": {
+        "transaction_type": {
+          "data": {
+            "id": "5",
+            "type": "transaction_type"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+### **2. Filtrar transações por id**
+```http
+GET api/v1/transactions/:id
+```
+
+**Requisição**
+```http
+curl "http://localhost:3000/api/v1/transactions/:id"
+```
+
+**Resposta**
+```http
+{
+  "data": {
+    "id": "12",
+    "type": "transaction",
+    "attributes": {
+      "id": 12,
+      "value": "132.0",
+      "date": "2019-03-01",
+      "cpf": "55641815063",
+      "card": "3123****7687",
+      "time": "145607",
+      "store_name": "LOJA DO Ó - MATRIZ",
+      "store_owner": "MARIA JOSEFINA"
+    },
+    "relationships": {
+      "transaction_type": {
+        "data": {
+          "id": "5",
+          "type": "transaction_type"
+        }
+      }
+    }
   }
-]
+}
 ```
 
-### **2. Filtrar transações por loja**
+### **2. Processar um arquivo**
+
 ```http
-GET /transactions?store_name=Loja%20Exemplo
+POST /api/v1/transactions
 ```
 
-### **3. Paginação**
-Os resultados podem ser paginados usando os parâmetros `page` e `per_page`.
+**Processar um arquivo valido (a partir do diretório raiz do projeto, rode o comando abaixo)**
 ```http
-GET /transactions?page=2&per_page=10
+curl -X POST -F "file=@spec/fixtures/CNAB.txt" http://localhost:3000/api/v1/transactions
 ```
 
+**Resposta**
+```http
+{
+	"message": "Arquivo processado com sucesso!"
+}
+```
 
+**Processar um arquivo invalido (a partir do diretório raiz do projeto rode o comando abaixo)**
+```http
+curl -X POST -F "file=@spec/fixtures/INVALID_CNAB.txt" http://localhost:3000/api/v1/transactions
+```
+
+**Resposta**
+```http
+{
+	"error": "Ops, há algo de errado com o arquivo."
+}
+```
+
+**Quando nenhum arquivo é enviado (a partir do diretório raiz do projeto rode o comando abaixo)**
+```http
+curl -X POST -F "file=" http://localhost:3000/api/v1/transactions
+```
+
+**Resposta**
+```http
+{
+	"error": "Por favor, selecione um arquivo."
+}
+```
