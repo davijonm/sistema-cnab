@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TransactionsController, type: :controller do
 
   describe "POST #create" do
-    let(:file) { fixture_file_upload("CNAB.txt", "text/plain") }
+    let(:file) { fixture_file_upload(Rails.root.join('spec/fixtures/CNAB.txt'), 'text/plain') }
 
     before do
       allow(controller).to receive(:authenticate_user!).and_return(true)
