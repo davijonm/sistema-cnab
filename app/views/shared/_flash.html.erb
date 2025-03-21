@@ -1,0 +1,13 @@
+<turbo-stream action="replace" target="flash_messages">
+  <template>
+    <% if flash.any? %>
+      <div id="flash_messages">
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </template>
+</turbo-stream>

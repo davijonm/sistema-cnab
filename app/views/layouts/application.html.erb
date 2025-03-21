@@ -23,23 +23,23 @@
   </head>
 
   <body>
-
-    <% if flash[:notice].present? || flash[:alert].present? %>
-      <div class="flash-message">
-        <% if flash[:notice].present? %>
-          <div class="alert alert-success">
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
-
-        <% if flash[:alert].present? %>
-          <div class="alert alert-danger">
-            <%= flash[:alert] %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div id="flash_messages">
+      <%= render "shared/flash" %>
+    </div>
 
     <%= yield %>
+
+    <turbo-frame id="turbo_redirect"></turbo-frame>
+
+
+    <script>
+      document.addEventListener("turbo:load", () => {
+        setTimeout(() => {
+          const flash = document.getElementById("flash_messages");
+          if (flash) { flash.style.display = "none"; }
+        }, 3000);
+      });
+    </script>
   </body>
+
 </html>
