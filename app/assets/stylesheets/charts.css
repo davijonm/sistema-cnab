@@ -52,29 +52,6 @@
   font-weight: 600;
 }
 
-.chart-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.chart-action-btn {
-  background: transparent;
-  border: none;
-  color: white;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.chart-action-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 .chart-body {
   padding: 1.5rem;
   height: 400px;
