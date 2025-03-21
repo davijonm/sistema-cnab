@@ -1,1 +1,10 @@
-teste
+<h1>Relatório de Transações</h1>
+
+<h2>Transações por Mês</h2>
+<%= line_chart @transactions_by_month, xtitle: "Mês", ytitle: "Total em R$", library: { responsive: true } %>
+
+<h2>Transações por Loja</h2>
+<%= bar_chart @transactions_by_store, xtitle: "Loja", ytitle: "Total em R$", library: { responsive: true } %>
+
+<h2>Transações por Tipo</h2>
+<%= pie_chart @transactions_by_type, legend: true, library: { responsive: true } %>
