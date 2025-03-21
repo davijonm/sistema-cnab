@@ -185,8 +185,8 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  padding: 0.8rem 1rem;
+  font-size: 16px;
   font-weight: 500;
   border-radius: var(--radius);
   transition: var(--transition);
@@ -201,7 +201,7 @@ body.modal-open {
 }
 
 .btn-primary:hover {
-  background-color: #1a202c;
+  background-color: #797979;
   transform: translateY(-1px);
 }
 
