@@ -10,4 +10,5 @@ pt-BR:
       last: "Última"
       previous: "Anterior"
       next: "Próxima"
+      truncate: "..."
 
