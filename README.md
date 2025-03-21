@@ -13,6 +13,9 @@ Este projeto é uma aplicação Ruby on Rails para processar arquivos CNAB, arma
 - FastJsonapi (para serialização da api)
 - Better Erros (para debug)
 - Turbo Stream (para fazer o carregamento parcial da página )
+- Chartkick (para renderização de gráficos)
+- Chart-JS-Rails (para renderização de gráficos)
+- Group Date (para agrupamento de dados)
 
 ## Setup do Projeto
 
@@ -61,6 +64,10 @@ docker compose exec web rspec ./spec
 - Utilizei a gem devise para fazer a autenticação;
 - Utilizei o turbo stream para recarregamento parcial da pagina;
 - Utilizei um callback no transactions_controller para garantir que as operações só serão realizadas mediante autenticação;
+
+## Bônus
+
+- Utilizei libs para a criação de graficos informativos.
 
 # Considerações
 
@@ -217,5 +224,4 @@ curl -X POST -F "file=" http://localhost:3000/api/v1/transactions
 
 - Criação de roles para controle de acesso de partes do sistema
 - Indexação de colunas importantes da tabela transactions para melhorar a performance (em caso de crescimento do banco de dados)
-- Gráficos com insights sobre as transações
 - Background jobs com Sidekiq por exemplo para o processamento do arquivo (considerando que houvessem muitas solicitações)
