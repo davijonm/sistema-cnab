@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Desafio bycoders_" %></title>
+    <title><%= content_for(:title) || "Sistema CNAB" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,22 +24,24 @@
 
   <body>
 
-    <% if flash[:notice].present? || flash[:alert].present? %>
-      <div class="flash-message">
-        <% if flash[:notice].present? %>
-          <div class="alert alert-success">
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
+    <%= render 'layouts/navbar' unless controller_name == 'sessions' && action_name == 'new' %>
 
-        <% if flash[:alert].present? %>
-          <div class="alert alert-danger">
-            <%= flash[:alert] %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div id="flash_messages">
+      <%= render "shared/flash" %>
+    </div>
 
     <%= yield %>
+
+    <turbo-frame id="turbo_redirect"></turbo-frame>
+
+    <script>
+      document.addEventListener("turbo:load", () => {
+        setTimeout(() => {
+          const flash = document.getElementById("flash_messages");
+          if (flash) { flash.style.display = "none"; }
+        }, 3000);
+      });
+    </script>
   </body>
+
 </html>

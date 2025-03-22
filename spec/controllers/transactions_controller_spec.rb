@@ -28,17 +28,17 @@ RSpec.describe TransactionsController, type: :controller do
           .and_return({ success: false, error: "Ops, há algo de errado com o arquivo." })
       end
 
-      it "renderiza o template new e define flash alert" do
+      it "redireciona para root_path com flash alert" do
         post :create, params: { file: file }
-        expect(response).to render_template("422")
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq("Ops, há algo de errado com o arquivo.")
       end
     end
 
     context "quando o arquivo nao é enviado" do
-      it "renderiza o template new e define flash alert" do
+      it "redireciona para root_path com flash alert" do
         post :create, params: {}
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq("Por favor, selecione um arquivo.")
       end
     end

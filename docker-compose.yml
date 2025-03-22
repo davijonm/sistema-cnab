@@ -1,6 +1,6 @@
 # docker-compose.yml
 
-version: '3'
+version: "3"
 services:
   web:
     build: .
@@ -19,7 +19,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: desafio_dev
+      POSTGRES_DB: sistema_cnab
     ports:
       - "5432:5432"
     volumes:

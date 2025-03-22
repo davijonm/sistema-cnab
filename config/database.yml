@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: desafio_dev
+  database: sistema_cnab
 
 test:
   <<: *default
@@ -18,18 +18,18 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: desafio_dev_production
-    username: desafio_dev
-    password: <%= ENV["DESAFIO_DEV_DATABASE_PASSWORD"] %>
+    database: sistema_cnab_production
+    username: sistema_cnab
+    password: <%= ENV["sistema_cnab_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    database: desafio_dev_production_cache
+    database: sistema_cnab_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: desafio_dev_production_queue
+    database: sistema_cnab_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: desafio_dev_production_cable
+    database: sistema_cnab_production_cable
     migrations_paths: db/cable_migrate

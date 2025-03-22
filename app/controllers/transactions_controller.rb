@@ -10,14 +10,19 @@ class TransactionsController < ApplicationController
       result = ProcessCnabService.new(params[:file]).process_file
 
       if result[:success]
-        redirect_to root_path, notice: "Arquivo processado com sucesso!"
+        flash[:notice] = "Arquivo processado com sucesso!"
       else
         flash[:alert] = "Ops, há algo de errado com o arquivo."
-        render 'transactions/422', status: :unprocessable_entity
       end
     else
       flash[:alert] = "Por favor, selecione um arquivo."
-      render :new
+    end
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("turbo_redirect", partial: "shared/turbo_redirect", locals: { path: root_path })
+      end
+      format.html { redirect_to root_path }
     end
   end
 
