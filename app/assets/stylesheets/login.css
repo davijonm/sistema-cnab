@@ -1,5 +1,5 @@
 .login-page {
-  min-height: 75vh;
+  min-height: 85vh;
   min-width: 50vh;
   display: flex;
   align-items: center;
@@ -12,16 +12,16 @@
   border-radius: 12px;
   box-shadow: var(--box-shadow);
   width: 100%;
-  max-width: 420px;
-  padding: 1.5rem;
+  max-width: 390px;
+  padding: 20px 30px 10px 30px;
   overflow: hidden;
+  text-align: center; 
 }
 
 .logo {
-  margin-left: 50px;
   max-width: 150px;
-  height: auto;
   border-radius: 100px;
+  margin-bottom: 20px;
 }
 
 .form-label {
