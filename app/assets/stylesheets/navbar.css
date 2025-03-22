@@ -25,6 +25,7 @@
 .logo-navbar {
   display: flex;
   align-items: center;
+  margin-left: 40px;
 }
 
 .logo-icon {
@@ -56,6 +57,7 @@
 }
 
 .navbar-links {
+  margin-left: -110px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
