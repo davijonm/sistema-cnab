@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # rotas para as views
   resources :transactions, only: [:new, :create, :index]
+  resources :charts, only: [:index]
 
   # rotas para o formato da API Rest
   namespace :api do

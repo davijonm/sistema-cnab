@@ -22,9 +22,10 @@
   margin-left: -40px;
 }
 
-.logo {
+.logo-navbar {
   display: flex;
   align-items: center;
+  margin-left: 40px;
 }
 
 .logo-icon {
@@ -42,8 +43,8 @@
 .logo-icon::before {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 9px;
+  height: 9px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.9);
   transform: rotate(45deg);
@@ -56,6 +57,7 @@
 }
 
 .navbar-links {
+  margin-left: -110px;
   display: flex;
   align-items: center;
   gap: 0.5rem;

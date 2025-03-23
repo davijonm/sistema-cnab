@@ -46,6 +46,11 @@ gem 'kaminari'
 gem 'devise'
 # api
 gem 'fast_jsonapi'
+# graficos
+gem 'chartkick'
+gem 'chart-js-rails'
+# agrupamento de dados, como por dia, mês...
+gem 'groupdate'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
