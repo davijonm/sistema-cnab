@@ -43,8 +43,8 @@
 .logo-icon::before {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 9px;
+  height: 9px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.9);
   transform: rotate(45deg);
