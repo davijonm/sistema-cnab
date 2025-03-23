@@ -10,7 +10,7 @@ RSpec.describe Api::V1::TransactionsController, type: :controller do
 
       expect(response).to have_http_status(:success)
       expect(json_response['data']).to be_an(Array)
-      expect(json_response['data'].count).to eq(1)
+      expect(json_response['data'].count).to eq(10)
     end
 
     it 'ordena as transações por data de forma decrescente' do
