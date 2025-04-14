@@ -13,5 +13,5 @@ if TransactionType.count.zero?
 end
 
 if User.count.zero?
-  User.create(email: "bycoders@exemplo.com", password: "senha1234", password_confirmation: "senha1234")
+  User.create(email: "test@example.com", password: "password1234", password_confirmation: "password1234")
 end

@@ -47,7 +47,7 @@ docker compose exec web rspec ./spec
 
 ### **1. Faça Login**
 - Acesse `http://localhost:3000/users/sign_in`
-- Faça o login com o email que já foi criado anteriormente pelo seeds: "bycoders@exemplo.com" e senha "senha1234"
+- Faça o login com o email que já foi criado anteriormente pelo seeds: "test@example.com" e senha "password1234"
 
 ### **2. Upload de Arquivo CNAB**
 - Faça o upload do arquivo CNAB (ele está dentro do repo neste diretório: spec/fixtures/CNAB.txt)

@@ -1,6 +1,9 @@
 <div class="login-page">
   <div class="login-container">
-    <%= image_tag "logo-bycoders.jpg", alt: "Logo", class: "logo" %>
+    <div class="logo-login">
+      <div class="logo-icon-login"></div>
+      <span class="logo-text-login">Sistema CNAB</span>
+    </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
       <div class="form-group">
