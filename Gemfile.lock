@@ -81,7 +81,6 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
-    benchmark (0.5.0)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -221,7 +220,7 @@ GEM
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2-x86_64-linux)
+    pg (1.6.3-x86_64-linux)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
